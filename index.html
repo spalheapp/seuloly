@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Açaí Seu Loly – Garrafinha Premiada</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍇</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { --roxo-dark:#1a0035; --roxo:#3d006e; --roxo-mid:#6200b3; --amarelo:#FFD700; --amarelo2:#FF9900; --verde:#00e676; --branco:#ffffff; }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Nunito',sans-serif;background:var(--roxo-dark);min-height:100vh;overflow-x:hidden;color:white}
+.bg-stars{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 10% 0%, rgba(98,0,179,.7) 0%, transparent 55%),radial-gradient(ellipse at 90% 100%, rgba(255,153,0,.15) 0%, transparent 55%),var(--roxo-dark)}
+.bg-stars::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 80% 15%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 50% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 35% 85%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 65% 45%,rgba(255,255,255,.3) 0%,transparent 100%)}
+.wrap{position:relative;z-index:1;max-width:430px;margin:0 auto;padding:0 14px 60px}
+.screen{display:none;animation:fadeUp .4s ease}.screen.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.header{text-align:center;padding:24px 0 16px}.logo-mascot{font-size:52px;animation:bobble 2.2s ease-in-out infinite}
+@keyframes bobble{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.logo-brand{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:4px;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--amarelo) 60%,var(--amarelo2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 8px rgba(0,0,0,.5))}
+.logo-sub{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:2px}
+.logo-tag{display:inline-block;background:linear-gradient(90deg,var(--amarelo),var(--amarelo2));color:var(--roxo-dark);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:3px 14px;border-radius:20px;margin-top:6px}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,215,0,.18);border-radius:22px;padding:22px 18px;margin-bottom:14px;backdrop-filter:blur(8px)}
+.card-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--amarelo);margin-bottom:6px}
+.card-desc{color:rgba(255,255,255,.65);font-size:14px;line-height:1.5;margin-bottom:18px}
+.input-box{width:100%;padding:16px;border-radius:14px;border:2px solid rgba(255,215,0,.35);background:rgba(255,255,255,.08);color:white;font-size:24px;font-family:'Bebas Neue',sans-serif;letter-spacing:8px;text-align:center;outline:none;transition:border-color .3s}
+.input-box::placeholder{color:rgba(255,255,255,.3);letter-spacing:4px;font-size:15px;font-family:'Nunito',sans-serif}.input-box:focus{border-color:var(--amarelo)}
+.btn{width:100%;padding:15px;border-radius:14px;border:none;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;cursor:pointer;transition:transform .15s,box-shadow .2s}.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(135deg,var(--amarelo),var(--amarelo2));color:var(--roxo-dark);box-shadow:0 6px 24px rgba(255,215,0,.4);margin-top:12px}.btn-gold:hover{box-shadow:0 8px 36px rgba(255,215,0,.65)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);font-size:15px;margin-top:8px}
+.msg-erro{background:rgba(255,70,70,.15);border:1px solid rgba(255,70,70,.35);border-radius:12px;padding:11px 14px;color:#ff8888;font-size:13px;font-weight:800;text-align:center;display:none;margin-top:12px}.msg-erro.on{display:block;animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.premios-lista{display:flex;flex-direction:column;gap:8px;margin-top:4px}.premio-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.05);border-radius:12px;padding:11px 14px;border-left:3px solid var(--amarelo)}
+.premio-row .qnt{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--amarelo);letter-spacing:1px}.premio-row .desc{font-size:13px;font-weight:700;color:rgba(255,255,255,.8)}.premio-row .icon{font-size:22px}
+.prog-wrap{margin:14px 0 6px}.prog-labels{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:7px}.prog-bar{height:9px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}.prog-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#00e676,var(--amarelo),var(--amarelo2));transition:width .9s ease}
+.album-section-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:rgba(255,255,255,.45);margin:16px 0 8px;display:flex;align-items:center;gap:8px}.album-section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1)}
+.album-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.a-slot{aspect-ratio:2.5/3.5;border-radius:10px;border:2px dashed rgba(255,255,255,.15);background:rgba(255,255,255,.03);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:rgba(255,255,255,.25);letter-spacing:.5px;gap:4px;overflow:hidden;position:relative;cursor:default}.a-slot .lock-icon{font-size:20px;opacity:.3}.a-slot .slot-num{font-size:10px;position:absolute;bottom:5px;color:rgba(255,255,255,.2)}
+.a-slot.got{border:2px solid var(--amarelo);background:linear-gradient(160deg,rgba(255,215,0,.12),rgba(255,153,0,.08));animation:popIn .45s cubic-bezier(.34,1.56,.64,1)}.a-slot.got .flag-big{font-size:28px;line-height:1}.a-slot.got .country-lbl{font-size:8px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--amarelo);text-align:center;line-height:1.2;padding:0 2px}.a-slot.got.rara{border-color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.18),rgba(255,215,0,.15))}.a-slot.got.rara .flag-big{font-size:22px}
+@keyframes popIn{0%{transform:scale(0) rotate(-10deg)}100%{transform:scale(1) rotate(0deg)}}
+.reveal-center{display:flex;flex-direction:column;align-items:center;gap:18px}.sticker-wrap{width:220px;height:308px;perspective:1000px;cursor:pointer}.sticker-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,0,.2,1)}.sticker-inner.flipped{transform:rotateY(180deg)}
+.sticker-face,.sticker-back{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;overflow:hidden}.sticker-face{background:linear-gradient(160deg,#4a0090,#1a0035);border:3px solid var(--amarelo);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 16px 50px rgba(0,0,0,.5),0 0 40px rgba(255,215,0,.2)}.sticker-face .brand-watermark{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:3px;color:rgba(255,215,0,.4);position:absolute;bottom:14px}.sticker-face .q-mark{font-size:80px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}.sticker-face .tap-txt{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.sticker-back{transform:rotateY(180deg)}.sticker-back .s-header{position:absolute;top:0;left:0;right:0;padding:10px 12px 8px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.35)}.s-country{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px}.s-num{font-family:'Bebas Neue',sans-serif;font-size:14px;color:rgba(255,255,255,.45)}.s-big-emoji{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:90px;line-height:1;filter:drop-shadow(0 4px 20px rgba(0,0,0,.5))}.s-footer{position:absolute;bottom:0;left:0;right:0;padding:10px 12px 14px;background:rgba(0,0,0,.4);text-align:center}.s-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;line-height:1}.s-pos{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.6;margin-top:1px}.s-rarity{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}.r-comum{background:rgba(255,255,255,.2);color:#eee}.r-rara{background:linear-gradient(90deg,#FFD700,#FF9900);color:#1a0035}.r-especial{background:linear-gradient(90deg,#c700ff,#FF6B6B,#FFD700);color:#fff}
+.sticker-back::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);animation:shine 3.5s linear infinite;pointer-events:none}
+@keyframes shine{0%{transform:translateX(-150%) translateY(-150%)}100%{transform:translateX(150%) translateY(150%)}}
+.reveal-success{background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);border-radius:14px;padding:14px 18px;text-align:center;color:#00e676;font-weight:800;font-size:14px;line-height:1.5;display:none}.reveal-success.on{display:block;animation:fadeUp .4s ease}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:9999;display:none}.cf{position:absolute;width:9px;height:9px;opacity:0;animation:fall linear forwards}
+@keyframes fall{0%{opacity:1;transform:translateY(-15px) rotate(0deg)}100%{opacity:0;transform:translateY(105vh) rotate(600deg)}}
+</style>
+</head>
+<body>
+<div class="bg-stars"></div>
+<div id="confetti"></div>
+<div class="wrap">
+  <div class="header">
+    <div class="logo-mascot">🍇</div>
+    <div class="logo-brand">AÇAÍ SEU LOLY</div>
+    <div class="logo-sub">⚽ Copa do Mundo 2026 ⚽</div>
+    <div style="margin-top:8px;"><span class="logo-tag">🏆 GARRAFINHA PREMIADA</span></div>
+  </div>
+  <div class="screen on" id="s-home">
+    <div class="card">
+      <div class="card-title">🎟️ Tem uma figurinha?</div>
+      <div class="card-desc">Digite o código que veio dentro da sua garrafa e descubra qual seleção você ganhou!</div>
+      <input class="input-box" id="cod-input" type="text" maxlength="10" placeholder="ex: LOLY001" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9-]/g,'')">
+      <button class="btn btn-gold" onclick="tryCode()">⚡ REVELAR FIGURINHA</button>
+      <div class="msg-erro" id="err-msg"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏆 Junte e Ganhe!</div>
+      <div class="premios-lista">
+        <div class="premio-row"><div><div class="qnt">5 figurinhas</div><div class="desc">1 Açaí Grátis</div></div><div class="icon">🍇</div></div>
+        <div class="premio-row"><div><div class="qnt">10 figurinhas</div><div class="desc">Brinde Especial</div></div><div class="icon">🎁</div></div>
+        <div class="premio-row"><div><div class="qnt">30 figurinhas</div><div class="desc">Prêmio Grande!</div></div><div class="icon">🏆</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📖 Meu Álbum</div>
+      <div class="prog-wrap"><div class="prog-labels"><span>Progresso</span><span id="prog-lbl">0 / 13</span></div><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div></div>
+      <div class="album-section-title">⚽ Seleções</div>
+      <div class="album-grid" id="grid-selecoes"></div>
+      <div class="album-section-title">⭐ Ultra Rara</div>
+      <div class="album-grid" id="grid-rara"></div>
+    </div>
+  </div>
+  <div class="screen" id="s-reveal">
+    <div class="card">
+      <div class="card-title">🎉 Sua Figurinha!</div>
+      <div class="card-desc" id="reveal-hint-top">Toque na figurinha para revelar a surpresa!</div>
+      <div class="reveal-center">
+        <div class="sticker-wrap" onclick="flipCard()">
+          <div class="sticker-inner" id="sticker-inner">
+            <div class="sticker-face"><span class="q-mark">❓</span><span class="tap-txt">Toque para revelar</span><span class="brand-watermark">AÇAÍ SEU LOLY</span></div>
+            <div class="sticker-back" id="sticker-back">
+              <div class="s-header"><span class="s-country" id="s-country"></span><span class="s-num" id="s-num"></span></div>
+              <div class="s-big-emoji" id="s-emoji"></div>
+              <div class="s-footer"><div class="s-name" id="s-name"></div><div class="s-pos" id="s-pos"></div><span class="s-rarity" id="s-rarity"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-success" id="reveal-ok">✅ Figurinha adicionada ao seu álbum!<br><span style="color:rgba(255,255,255,.6);font-size:12px;">Compre mais e complete a coleção!</span></div>
+        <button class="btn btn-gold" id="btn-album" onclick="goHome()" style="display:none">📖 VER MEU ÁLBUM</button>
+        <button class="btn btn-ghost" onclick="goHome()">← Voltar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+const STICKERS=[{id:1,name:'Brasil',country:'Brasil 🇧🇷',pos:'Seleção',rarity:'comum',emoji:'🇧🇷',bg:'linear-gradient(160deg,#009c3b,#ffdf00,#009c3b)',slot:'sel'},{id:2,name:'Argentina',country:'Argentina 🇦🇷',pos:'Seleção',rarity:'comum',emoji:'🇦🇷',bg:'linear-gradient(160deg,#74acdf,#fff,#74acdf)',slot:'sel'},{id:3,name:'França',country:'França 🇫🇷',pos:'Seleção',rarity:'comum',emoji:'🇫🇷',bg:'linear-gradient(160deg,#002395,#fff,#ED2939)',slot:'sel'},{id:4,name:'Portugal',country:'Portugal 🇵🇹',pos:'Seleção',rarity:'comum',emoji:'🇵🇹',bg:'linear-gradient(160deg,#006600,#ff0000)',slot:'sel'},{id:5,name:'Alemanha',country:'Alemanha 🇩🇪',pos:'Seleção',rarity:'comum',emoji:'🇩🇪',bg:'linear-gradient(160deg,#000,#D00,#FFCE00)',slot:'sel'},{id:6,name:'Espanha',country:'Espanha 🇪🇸',pos:'Seleção',rarity:'comum',emoji:'🇪🇸',bg:'linear-gradient(160deg,#AA151B,#F1BF00,#AA151B)',slot:'sel'},{id:7,name:'Bélgica',country:'Bélgica 🇧🇪',pos:'Seleção',rarity:'comum',emoji:'🇧🇪',bg:'linear-gradient(160deg,#000,#F00,#FDDA25)',slot:'sel'},{id:8,name:'Inglaterra',country:'Inglaterra 🏴',pos:'Seleção',rarity:'comum',emoji:'🏴',bg:'linear-gradient(160deg,#fff,#CF142B)',slot:'sel'},{id:9,name:'Holanda',country:'Holanda 🇳🇱',pos:'Seleção',rarity:'comum',emoji:'🇳🇱',bg:'linear-gradient(160deg,#AE1C28,#fff,#21468B)',slot:'sel'},{id:10,name:'Uruguai',country:'Uruguai 🇺🇾',pos:'Seleção',rarity:'comum',emoji:'🇺🇾',bg:'linear-gradient(160deg,#5EB6E4,#fff)',slot:'sel'},{id:11,name:'Itália',country:'Itália 🇮🇹',pos:'Seleção',rarity:'comum',emoji:'🇮🇹',bg:'linear-gradient(160deg,#009246,#fff,#CE2B37)',slot:'sel'},{id:12,name:'Japão',country:'Japão 🇯🇵',pos:'Seleção',rarity:'comum',emoji:'🇯🇵',bg:'linear-gradient(160deg,#fff,#BC002D)',slot:'sel'},{id:13,name:'Taça do Mundo',country:'⭐ ULTRA RARA',pos:'Figurinha Rara',rarity:'especial',emoji:'🏆',bg:'linear-gradient(160deg,#b8860b,#FFD700,#ffe066,#b8860b)',slot:'rara'}];
+let album=[];let current=null;
+function renderGrid(gridId,list){const g=document.getElementById(gridId);g.innerHTML='';list.forEach(s=>{const got=album.includes(s.id);const div=document.createElement('div');div.className='a-slot'+(got?' got'+(s.rarity==='especial'?' rara':''):'' );if(got){div.style.background=s.bg;div.innerHTML=`<span class="flag-big">${s.emoji}</span><span class="country-lbl">${s.name}</span>`;}else{div.innerHTML=`<span class="lock-icon">🔒</span><span class="slot-num">#${String(s.id).padStart(2,'0')}</span>`;}g.appendChild(div);});}
+function renderAlbum(){renderGrid('grid-selecoes',STICKERS.filter(s=>s.slot==='sel'));renderGrid('grid-rara',STICKERS.filter(s=>s.slot==='rara'));document.getElementById('prog-lbl').textContent=`${album.length} / 13`;document.getElementById('prog-fill').style.width=`${(album.length/13)*100}%`;}
+function showErr(msg){const e=document.getElementById('err-msg');e.textContent=msg;e.classList.add('on');}
+async function loadAlbum(){try{const res=await fetch('/api/album');const data=await res.json();album=Array.isArray(data.album)?data.album:[];renderAlbum();}catch{showErr('❌ Falha na requisição. Tente novamente!');}}
+async function tryCode(){const code=document.getElementById('cod-input').value.trim().toUpperCase().replace(/[^A-Z0-9-]/g,'');const err=document.getElementById('err-msg');err.classList.remove('on');try{const res=await fetch('/api/reveal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});const data=await res.json();if(!res.ok||!data.ok){showErr(data.message||'❌ Falha na requisição. Tente novamente!');return;}current=data.sticker;album=Array.isArray(data.album)?data.album:album;document.getElementById('cod-input').value='';document.getElementById('sticker-inner').classList.remove('flipped');document.getElementById('reveal-ok').classList.remove('on');document.getElementById('btn-album').style.display='none';document.getElementById('reveal-hint-top').textContent='Toque na figurinha para revelar a surpresa!';const back=document.getElementById('sticker-back');back.style.background=current.bg;document.getElementById('s-country').textContent=current.country;document.getElementById('s-num').textContent=`#${String(current.id).padStart(2,'0')}`;document.getElementById('s-emoji').textContent=current.emoji;document.getElementById('s-name').textContent=current.name;document.getElementById('s-pos').textContent=current.pos;const rEl=document.getElementById('s-rarity');const rMap={comum:'r-comum',rara:'r-rara',especial:'r-especial'};rEl.className='s-rarity '+(rMap[current.rarity]||'r-comum');rEl.textContent=current.rarity==='especial'?'⭐ ULTRA RARA':current.rarity==='rara'?'★ RARA':'COMUM';goScreen('s-reveal');}catch{showErr('❌ Falha na requisição. Tente novamente!');}}
+function flipCard(){const inner=document.getElementById('sticker-inner');if(inner.classList.contains('flipped'))return;inner.classList.add('flipped');setTimeout(()=>{launchConfetti();document.getElementById('reveal-ok').classList.add('on');document.getElementById('btn-album').style.display='block';document.getElementById('reveal-hint-top').textContent='';},750)}
+function launchConfetti(){const w=document.getElementById('confetti');w.style.display='block';w.innerHTML='';const cols=['#FFD700','#FF9900','#00e676','#FF6B6B','#fff','#c700ff'];for(let i=0;i<70;i++){const c=document.createElement('div');c.className='cf';c.style.cssText=`left:${Math.random()*100}%;top:${-(Math.random()*40+10)}px;background:${cols[Math.floor(Math.random()*cols.length)]};width:${6+Math.random()*9}px;height:${6+Math.random()*9}px;border-radius:${Math.random()>.5?'50%':'3px'};animation-delay:${Math.random()*.8}s;animation-duration:${1.5+Math.random()*1.5}s;`;w.appendChild(c);}setTimeout(()=>{w.style.display='none';w.innerHTML='';},3500)}
+function goScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});}function goHome(){renderAlbum();goScreen('s-home');}
+loadAlbum();
+</script>
+</body>
+</html>
